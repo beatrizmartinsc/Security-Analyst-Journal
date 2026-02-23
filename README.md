@@ -1,64 +1,43 @@
-# Incident Response Handler’s Journal
+# 🛡️ Security Analyst Operations Journal
 
-This repository contains documented security investigations conducted as part of my cybersecurity training and lab environments.  
-
-The purpose of this journal is to demonstrate structured incident handling, analytical reasoning, and technical investigation skills aligned with the NIST Incident Response Lifecycle.
+A technical repository documenting end-to-end security operations, from **Governance, Risk, and Compliance (GRC)** to **Active Incident Response**. This journal serves as a record of applied security methodologies across various simulated and lab environments.
 
 ---
 
-## Investigation Methodology
-
-All cases are documented following structured incident response principles:
-
-- Detection & Analysis  
-- Impact Assessment  
-- Containment Considerations  
-- Eradication & Recovery (when applicable)  
-- Lessons Learned  
-
-The focus is on demonstrating investigative thinking, evidence evaluation, and response decision-making.
+## 🛠️ Technical Skills & Methodologies
+* **Security Operations:** Log Analysis (Splunk), Traffic Analysis (Wireshark), Incident Lifecycle Management.
+* **Hardening & Engineering:** Linux System Administration, Access Control (IAM), Vulnerability Management.
+* **Compliance & Frameworks:** NIST SP 800-61 r2 (Incident Handling), NIST Cybersecurity Framework (CSF), MITRE ATT&CK®.
 
 ---
 
-## Documented Cases
+## 📂 Cybersecurity Projects
 
-| Date | Environment | Incident Type | Link |
-|------|------------|--------------|------|
-| 2025-11-29 | Simulated Healthcare | Google Cybersecurity Professional Certificate | Ransomware via Phishing | [View Case](./cases/ransomware-phishing-incident.md) |
-| 2025-12-01 | Windows VM Lab | Google Cybersecurity Professional Certificate | Network Traffic Analysis (Wireshark) | [View Case](./cases/wireshark-packet-analysis.md) |
-| 2025-12-01 | Linux VM Lab | Google Cybersecurity Professional Certificate | Packet Capture & Filtering (tcpdump) | [View Case](./cases/tcpdump-network-capture.md) |
-| 2025-12-01 | Simulated Financial Org | Google Cybersecurity Professional Certificate | Malicious File Investigation | [View Case](./cases/malicious-file-analysis.md) |
+### 🕵️ 01. Incident Response](./01-Incident-Response/)
+Analysis and mitigation of security threats using industry-standard frameworks.
+* **NIST Phase Analysis:** Detailed reports on Ransomware, Phishing, and Unauthorized Access based on Google Cybersecurity scenarios.
+* **Technical Labs:** Hands-on threat hunting and log analysis via TryHackMe.
 
----
+### 📝 02. Security Audits](./02-Security-Audits/)
+Evaluating organizational security posture through systematic risk assessments and control verification. Focus on identifying gaps and providing actionable remediation recommendations.
 
-## Tools & Technologies Used
+### 🏛️ 03. GRC & NIST Framework Implementation](./03-GRC-NIST/)
+Direct application of the NIST CSF to business environments. Mapping security requirements to the **Identify, Protect, Detect, Respond, and Recover** functions.
 
-- Wireshark  
-- tcpdump
-- Linux Command Line   
-- Windows Virtual Machine
-- Network Traffic Filtering
-- Packet-Level Inspection  
+### 🔍 04. Vulnerability Management](./04-Vulnerability-Management/)
+The lifecycle of vulnerability identification and prioritization. Includes risk-based analysis to determine remediation urgency for critical assets.
 
----
-
-## Skills Demonstrated
-
-- Incident documentation aligned with NIST  
-- Phishing and ransomware analysis  
-- Packet-level traffic inspection  
-- Log and network filtering techniques  
-- Indicator of Compromise (IoC) identification  
-- Structured reporting and containment planning  
+### 🐧 05. Linux Security & Hardening](./05-Linux-Security/)
+Implementation of the **Principle of Least Privilege (PoLP)**. Projects focus on managing user permissions (`chmod`/`chown`), securing sensitive directories, and auditing system access.
 
 ---
 
-## Purpose of this Repository
-
-This journal serves as part of my cybersecurity portfolio, showcasing hands-on analysis and practical application of incident response concepts in structured investigative scenarios.
+## 🚀 Technical Achievements & Profiles
+* **Certifications:** Google Cybersecurity Professional Certificate
+* **Hands-on Training:** [Link to TryHackMe Profile](https://tryhackme.com/p/Beeatrizmcosta)
+* **Professional Network:** [Link to LinkedIn](www.linkedin.com/in/beatriz-martins-cybersecurity)
 
 ---
-
-*All investigations are based on simulated or controlled lab environments. No real-world sensitive data is included.*
+*Disclaimer: All analysis is performed in isolated lab environments. Data is sanitized to ensure the privacy of simulated entities.*
 
 
