@@ -13,7 +13,7 @@ A technical repository documenting end-to-end security operations, from **Govern
 
 ## 📂 Cybersecurity Projects
 
-### 🕵️ 01. Incident Response](./01-Incident-Response/)
+### Incident Response[(Incident-Response)
 Analysis and mitigation of security threats using industry-standard frameworks.
 * **NIST Phase Analysis:** Detailed reports on Ransomware, Phishing, and Unauthorized Access based on Google Cybersecurity scenarios.
 * **Technical Labs:** Hands-on threat hunting and log analysis via TryHackMe.
