@@ -1,56 +1,107 @@
-Linux Access Control Review — File Permissions Analysis
-Project Overview
+# Linux Access Control Review — File Permissions Analysis
+
+## Project Overview
+
 As part of a research team at a large organization, I was responsible for ensuring that each team member's access rights were consistent with their job roles and assigned tasks.
-This activity involved reviewing existing file and directory permissions and verifying alignment with the least privilege principle. To protect confidential data — such as financial records — from insider threats or external attackers, I modified or removed unauthorized access where necessary.
 
-Check File and Directory Details
-Before making any changes, I reviewed the permissions of the /home/researcher2/projects directory using the ls -la command to display file ownership, group ownership, permissions, and hidden files.
+This activity involved reviewing existing file and directory permissions and verifying alignment with the **least privilege principle**. To protect confidential data — such as financial records — from insider threats or external attackers, I modified or removed unauthorized access where necessary.
+
+---
+
+## Check File and Directory Details
+
+Before making any changes, I reviewed the permissions of the `/home/researcher2/projects` directory using the `ls -la` command to display file ownership, group ownership, permissions, and hidden files.
+
 This directory contained:
-
-One hidden file (.project_x.txt)
-Several project files
-A subdirectory called drafts
+- One hidden file (`.project_x.txt`)
+- Several project files
+- A subdirectory called `drafts`
 
 During this initial review, I identified the following issues:
-
-Inconsistent permissions across files with similar purposes.
-Excessive execution permissions on the drafts directory beyond the intended user.
-Broader access than expected on certain files.
+- **Inconsistent permissions** across files with similar purposes.
+- **Excessive execution permissions** on the `drafts` directory beyond the intended user.
+- **Broader access than expected** on certain files.
 
 These observations guided the permission modifications in the following steps.
-Show Image
 
-Describe the Permissions String
-The file project_t.txt had the following permissions string:
+![Figure 1: Output of ls -la command showing permissions before changes](images/fig1-ls-la-before.png)
+
+---
+
+## Describe the Permissions String
+
+The file `project_t.txt` had the following permissions string:
+```
 -rw-rw-r--
+```
+
 This is a 10-character string that Linux uses to define access levels for different user categories and to identify the resource type:
-CharactersMeaning- (1st)Regular filerw- (2nd–4th)Owner — read and writerw- (5th–7th)Group — read and writer-- (8th–10th)Other — read only
 
-Change File Permissions
-After examining the baseline permissions, I found files that granted write access to other users, violating the organization's security policy. Write permissions for users outside the intended group increase the risk of unauthorized or accidental file modification.
-I used the chmod command to remove write access for other users:
-bashchmod o-w <filename>
+| Characters | Meaning |
+|---|---|
+| `-` (1st) | Regular file |
+| `rw-` (2nd–4th) | **Owner** — read and write |
+| `rw-` (5th–7th) | **Group** — read and write |
+| `r--` (8th–10th) | **Other** — read only |
+
+---
+
+## Change File Permissions
+
+After examining the baseline permissions, I found files that granted **write access to other users**, violating the organization's security policy. Write permissions for users outside the intended group increase the risk of unauthorized or accidental file modification.
+
+I used the `chmod` command to remove write access for other users:
+```bash
+chmod o-w <filename>
+```
+
 This preserved proper access for the file owner and group while restricting others.
-Additionally, I identified that project_m.txt granted read access to the group, even though it was intended to be restricted to the file owner only. I removed group read permissions:
-bashchmod g-r project_m.txt
-Show Image
-Show Image
 
-Change File Permissions on a Hidden File
+Additionally, I identified that `project_m.txt` granted **read access to the group**, even though it was intended to be restricted to the file owner only. I removed group read permissions:
+```bash
+chmod g-r project_m.txt
+```
+
+![Figure 2: Updated permissions after removing write access for other users](images/fig2-chmod-other.png)
+
+![Figure 3: Updated permissions for project_m.txt after removing group read access](images/fig3-chmod-group.png)
+
+---
+
+## Change File Permissions on a Hidden File
+
 Hidden files are easily overlooked during routine audits, so they were also included in this review.
-The hidden file .project_x.txt had been archived and should not have been modifiable by any user. I found it still had unnecessary write permissions.
+
+The hidden file `.project_x.txt` had been archived and should not have been modifiable by any user. I found it still had unnecessary **write permissions**.
+
 I adjusted the permissions to read-only for both user and group:
-bashchmod u=r,g=r .project_x.txt
+```bash
+chmod u=r,g=r .project_x.txt
+```
+
 This ensured the integrity of the archived file by preventing any modifications.
-Show Image
 
-Change Directory Permissions
-As a final step, I reviewed the drafts subdirectory. The group had execute permissions, which allowed them to access the directory and its contents. Since this directory contained draft and potentially sensitive information, this level of access was inappropriate.
+![Figure 4: Updated permissions for .project_x.txt after removing write access](images/fig4-hidden-file.png)
+
+---
+
+## Change Directory Permissions
+
+As a final step, I reviewed the `drafts` subdirectory. The group had **execute permissions**, which allowed them to access the directory and its contents. Since this directory contained draft and potentially sensitive information, this level of access was inappropriate.
+
 I removed execute permissions for the group:
-bashchmod g-x drafts
-This ensured that only the file owner could access and navigate the directory.
-Show Image
+```bash
+chmod g-x drafts
+```
 
-Summary
-In this project, I conducted an in-depth review of file and directory permissions on a Linux system. I evaluated existing access settings and corrected them to align with the least privilege principle.
+This ensured that only the file owner could access and navigate the directory.
+
+![Figure 5: Updated permissions for the drafts directory after removing group execute access](images/fig5-directory-perms.png)
+
+---
+
+## Summary
+
+In this project, I conducted an in-depth review of file and directory permissions on a Linux system. I evaluated existing access settings and corrected them to align with the **least privilege principle**.
+
 By tightening access controls, the overall attack surface was reduced — minimizing the risk of unauthorized access or modification. This work demonstrates how proactive permission management plays a critical role in maintaining security within an enterprise environment.
