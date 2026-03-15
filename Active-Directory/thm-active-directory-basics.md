@@ -1,10 +1,6 @@
 # TryHackMe — Active Directory Basics | Lab Write-Up
-
-> **Platform:** TryHackMe  
-> **Room:** Active Directory Basics  
-> **Difficulty:** Easy  
-> **Status:** Completed ✅  
-> **Date:** March 2026  
+ 
+> **Room:** Active Directory Basics    
 > **Author:** Beatriz Martins | [GitHub](https://github.com/beatrizmartinsc) | [LinkedIn](https://linkedin.com/in/beatriz-martins-cybersecurity)
 
 ---
